@@ -57,8 +57,8 @@ public class RequestService {
         Request request = new Request(requestDto.getSymptoms(), domZdravljaService.getDomZdravljaById(requestDto.getDomZdravlja()).get(), patient);
         requestRepository.save(request);
         String htmlMsg = "Postovani, <br>" +
-                "Molimo da potvrdite Vas termin klikom <a href = 'http://localhost:8080/request/confirm/" + request.getRequestId() + "/1'>ovdje</a>" + "<br>" +
-                "Klikom <a href = 'http://localhost:8080/request/cancel/" + request.getRequestId() + "'>ovdje </a> mozete otkazati svoj termin.";
+                "Molimo da potvrdite Vas termin klikom <a href = 'https://pregledondemand.herokuapp.com/request/confirm/" + request.getRequestId() + "/1'>ovdje</a>" + "<br>" +
+                "Klikom <a href = 'https://pregledondemand.herokuapp.com/request/cancel/" + request.getRequestId() + "'>ovdje </a> mozete otkazati svoj termin.";
         MimeMessage message = emailSender.createMimeMessage();
         MimeMessageHelper helper = null;
         try {
