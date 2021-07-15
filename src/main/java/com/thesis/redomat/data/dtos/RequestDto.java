@@ -21,6 +21,7 @@ import java.util.Set;
 @NoArgsConstructor
 @Data
 public class RequestDto {
+    private int requestId;
     private String fName;
     private String lName;
     private String email;
@@ -29,13 +30,22 @@ public class RequestDto {
     private String symptoms;
 
 
-    public RequestDto(String fName, String lName, String email, String ssn, int domZdravlja, String symptoms) {
+    public RequestDto(int requestId, String fName, String lName, String email, String ssn, int domZdravlja, String symptoms) {
+        this.requestId = requestId;
         this.fName = fName;
         this.lName = lName;
         this.email = email;
         this.ssn = ssn;
         this.domZdravlja = domZdravlja;
         this.symptoms = symptoms;
+    }
+
+    public int getRequestId() {
+        return requestId;
+    }
+
+    public void setRequestId(int requestId) {
+        this.requestId = requestId;
     }
 
     public String getfName() {
