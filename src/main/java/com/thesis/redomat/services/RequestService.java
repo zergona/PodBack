@@ -63,7 +63,7 @@ public class RequestService {
         MimeMessageHelper helper = null;
         try {
             helper = new MimeMessageHelper(message, true);
-            helper.setFrom("noreply@baeldung.com");
+            helper.setFrom("noreply@podmobile.ba");
             helper.setTo(requestDto.getEmail());
             helper.setSubject("Potvrda zahtjeva za pregled u COVID ambulanti");
             helper.setText(htmlMsg, true);
@@ -109,6 +109,22 @@ public class RequestService {
         int todayActiveCountInt = todayActiveCount.get();
         double etaInMin = todayActiveCountInt * 20;
         ResponseDto responseDto = new ResponseDto(todayActiveCountInt, etaInMin);
+        String email = requestOptional.get().getPatient().getEmail();
+        String htmlMsg = "Postovani, <br>" +
+                "Vas pregled bi trebao poceti za " + etaInMin + " minuta. <br>"
+                +"Vi ste " + todayActiveCount +" u redu.";
+        MimeMessage message = emailSender.createMimeMessage();
+        MimeMessageHelper helper = null;
+        try {
+            helper = new MimeMessageHelper(message, true);
+            helper.setFrom("noreply@podmobile.ba");
+            helper.setTo(email);
+            helper.setSubject("Vas pregled u COVID ambulanti");
+            helper.setText(htmlMsg, true);
+            emailSender.send(message);
+        } catch (MessagingException e) {
+            e.printStackTrace();
+        }
         return new ResponseEntity(responseDto, HttpStatus.OK);
     }
 
