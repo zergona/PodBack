@@ -35,7 +35,7 @@ public class RequestController {
 
         ConfirmationDto confirmationDto = new ConfirmationDto(id, confirmation);
         ResponseEntity re = requestService.confirmRequest(confirmationDto);
-        return new ModelAndView("redirect:" + "http://localhost:4200/confirmation");
+        return new ModelAndView("redirect:" + "https://podmobile.herokuapp.com/confirmation");
     }
 
     @CrossOrigin
@@ -49,7 +49,7 @@ public class RequestController {
     @GetMapping("/cancel/{id}")
     ModelAndView cancelRequest(@PathVariable int id){
         requestService.cancelRequest(id);
-        return new ModelAndView("redirect:" + "http://localhost:4200/cancel");
+        return new ModelAndView("redirect:" + "https://podmobile.herokuapp.com/cancel");
     }
 
     @CrossOrigin
