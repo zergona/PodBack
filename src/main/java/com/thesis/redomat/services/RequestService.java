@@ -112,7 +112,7 @@ public class RequestService {
         String email = requestOptional.get().getPatient().getEmail();
         String htmlMsg = "Postovani, <br>" +
                 "Vas pregled bi trebao poceti za " + etaInMin + " minuta. <br>"
-                +"Vi ste " + todayActiveCount +" u redu.";
+                +"Vi ste " + todayActiveCountInt +" u redu.";
         MimeMessage message = emailSender.createMimeMessage();
         MimeMessageHelper helper = null;
         try {
